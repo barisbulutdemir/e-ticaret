@@ -1,15 +1,29 @@
-import './css/style.css';
-import InputForm from "./components/inputForm";
+import './styles.css';
+import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
+import Home from "./pages/home";
+import Navbar from "./companents/navbar/navbar";
+import Footer from "./companents/footer";
+import PageContainer from "./container/PageContainer";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import DetailProduct from "./pages/detail";
+import Cart from "./pages/cart";
 
 function App() {
+
   return (
-    <div className="App">
-     <div className=" w-full min-h-screen bg-gradient-to-t from-gray-400 to-gray-50 bg-gray-50 px-4 flex justify-center items-center">
-        <div className="w-[850px] p-10  flex flex-col gap-10">
-         <InputForm/>
-        </div>
-     </div>
-    </div>
+      <PageContainer>
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products/:id" element={<DetailProduct />} />
+                <Route path="/cart" element={<Cart />} />
+
+            </Routes>
+            <Footer />
+        </Router>
+      </PageContainer>
   );
 }
 
